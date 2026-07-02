@@ -12,186 +12,168 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="app">
-      <header class="topbar">
-        <a class="brand" href="/" aria-label="Sber.Up">
-          <span class="brand-mark">Up</span>
-          <span>Sber.Up</span>
-        </a>
-
-        <nav class="main-nav" aria-label="Главная навигация">
-          <button class="active" type="button">Обзор</button>
-          <button type="button">Курсы</button>
-          <button type="button">Навыки</button>
-          <button type="button">Карьера</button>
-        </nav>
-
-        <div class="profile-chip" aria-label="Профиль студента">
-          <span>АК</span>
-          <div>
-            <strong>Алина Крылова</strong>
-            <small>Бизнес-аналитика</small>
-          </div>
+    <main class="stage" aria-label="Sber.Up">
+      <section class="blueprint" aria-label="Личный кабинет Sber.Up">
+        <div class="zoom-widget" aria-hidden="true">
+          <span><i data-lucide="settings"></i></span>
+          <span>&lt;&lt;</span>
+          <strong>1.00</strong>
+          <span>&gt;&gt;</span>
         </div>
-      </header>
 
-      <main class="dashboard">
-        <section class="main-column" aria-label="Личный кабинет студента">
-          <section class="welcome-card" aria-labelledby="welcome-title">
-            <div>
-              <p class="eyebrow">Личный кабинет</p>
-              <h1 id="welcome-title">Добро пожаловать, Алина</h1>
-              <p>
-                ИИ-Декан обновил учебный путь под ваш прогресс и свежий спрос рынка:
-                финансы, управление продуктом и аналитика решений.
-              </p>
-            </div>
-            <button class="primary-action" id="rebuildBtn" type="button">
-              <i data-lucide="refresh-cw"></i>
-              Обновить неделю
-            </button>
-          </section>
+        <span class="beta-pill">demo</span>
 
-          <section class="courses-section" aria-labelledby="courses-title">
-            <div class="section-head">
+        <section class="product-window">
+          <aside class="rail" aria-label="Навигация">
+            <a class="logo" href="/" aria-label="Sber.Up">
+              <strong>Sber.Up</strong>
+              <span>личный кабинет</span>
+            </a>
+
+            <nav class="rail-menu">
+              <button class="rail-item rail-blue active" type="button">
+                <small>01</small>
+                <span>Обзор</span>
+              </button>
+              <button class="rail-item rail-yellow" type="button">
+                <small>02</small>
+                <span>Курсы</span>
+              </button>
+              <button class="rail-item rail-orange" type="button">
+                <small>03</small>
+                <span>Навыки</span>
+              </button>
+              <button class="rail-item rail-green" type="button">
+                <small>04</small>
+                <span>Карьера</span>
+              </button>
+            </nav>
+
+            <button class="rail-cta" id="rebuildBtn" type="button">Обновить путь</button>
+          </aside>
+
+          <div class="workspace">
+            <header class="cabinet-header">
               <div>
-                <p class="eyebrow">Текущие курсы</p>
-                <h2 id="courses-title">Учебный путь на эту неделю</h2>
+                <p class="eyebrow">Добро пожаловать</p>
+                <h1>Алина Крылова</h1>
+                <p>
+                  ИИ-Декан пересобрал неделю под ваш прогресс и спрос рынка:
+                  финансы, продукт и стратегия.
+                </p>
               </div>
-              <span class="week-pill" id="weekValue">Неделя 8</span>
-            </div>
+              <div class="student-card">
+                <span>АК</span>
+                <div>
+                  <strong id="weekValue">Неделя 8</strong>
+                  <small>Бизнес-аналитика</small>
+                </div>
+              </div>
+            </header>
 
-            <div class="course-row" aria-label="Список текущих курсов">
+            <section class="course-strip" aria-label="Текущие курсы">
               <button
                 class="course-card active"
                 type="button"
                 data-course="finance"
                 aria-pressed="true"
               >
-                <span class="course-icon"><i data-lucide="chart-no-axes-combined"></i></span>
-                <span class="course-body">
-                  <small>Курс 1</small>
-                  <strong>Финансовое моделирование</strong>
-                  <em>72% пройдено</em>
-                  <span class="mini-progress"><span style="width: 72%"></span></span>
-                </span>
+                <small>Курс 1</small>
+                <strong>Финансовое моделирование</strong>
+                <em>72% пройдено</em>
+                <span class="mini-progress"><span style="width: 72%"></span></span>
               </button>
 
               <button class="course-card" type="button" data-course="product" aria-pressed="false">
-                <span class="course-icon"><i data-lucide="layers-3"></i></span>
-                <span class="course-body">
-                  <small>Курс 2</small>
-                  <strong>Управление продуктом</strong>
-                  <em>46% пройдено</em>
-                  <span class="mini-progress"><span style="width: 46%"></span></span>
-                </span>
+                <small>Курс 2</small>
+                <strong>Управление продуктом</strong>
+                <em>46% пройдено</em>
+                <span class="mini-progress"><span style="width: 46%"></span></span>
               </button>
 
               <button class="course-card" type="button" data-course="strategy" aria-pressed="false">
-                <span class="course-icon"><i data-lucide="briefcase-business"></i></span>
-                <span class="course-body">
-                  <small>Курс 3</small>
-                  <strong>Стратегия и рынок</strong>
-                  <em>58% пройдено</em>
-                  <span class="mini-progress"><span style="width: 58%"></span></span>
-                </span>
+                <small>Курс 3</small>
+                <strong>Стратегия и рынок</strong>
+                <em>58% пройдено</em>
+                <span class="mini-progress"><span style="width: 58%"></span></span>
               </button>
-            </div>
-          </section>
+            </section>
 
-          <section class="course-detail" aria-labelledby="detailTitle">
-            <div class="detail-top">
-              <div>
-                <p class="eyebrow">Выбранный курс</p>
-                <h2 id="detailTitle">Финансовое моделирование</h2>
+            <section class="work-grid">
+              <article class="detail-panel" aria-labelledby="detailTitle">
+                <div class="panel-head">
+                  <div>
+                    <p class="eyebrow">Выбранный курс</p>
+                    <h2 id="detailTitle">Финансовое моделирование</h2>
+                  </div>
+                  <span class="status-pill" id="detailProgress">72%</span>
+                </div>
                 <p id="detailText">
                   Учимся строить понятную модель бизнеса: доходы, расходы, сценарии
                   роста и точка окупаемости.
                 </p>
-              </div>
-              <span class="status-pill" id="detailProgress">72%</span>
-            </div>
 
-            <div class="learning-grid">
-              <article>
-                <span>Сегодня</span>
-                <strong id="todayTask">Собрать прогноз выручки на 6 месяцев</strong>
+                <div class="task-grid">
+                  <div>
+                    <span>Сегодня</span>
+                    <strong id="todayTask">Собрать прогноз выручки на 6 месяцев</strong>
+                  </div>
+                  <div>
+                    <span>Практика</span>
+                    <strong id="practiceTask">Модель для малого сервиса подписки</strong>
+                  </div>
+                  <div>
+                    <span>Почему сейчас</span>
+                    <strong id="marketReason">На рынке растет спрос на финансовых аналитиков</strong>
+                  </div>
+                </div>
               </article>
-              <article>
-                <span>Практика</span>
-                <strong id="practiceTask">Модель для малого сервиса подписки</strong>
-              </article>
-              <article>
-                <span>Почему сейчас</span>
-                <strong id="marketReason">На рынке растет спрос на финансовых аналитиков</strong>
-              </article>
-            </div>
-          </section>
+
+              <aside class="architect-panel" aria-label="ИИ-Архитектор">
+                <div class="architect-title">
+                  <span><i data-lucide="bot"></i></span>
+                  <div>
+                    <p class="eyebrow">ИИ-Архитектор</p>
+                    <h2>Спросите про путь</h2>
+                  </div>
+                </div>
+
+                <div class="chat" id="chat">
+                  <div class="message bot">
+                    Я усилил финансы и стратегию, потому что по ним вырос спрос
+                    в вакансиях для начинающих бизнес-аналитиков.
+                  </div>
+                  <div class="message user">Что мне делать сегодня?</div>
+                  <div class="message bot" id="botAnswer">
+                    Начните с прогноза выручки. Это закроет пробел по расчетам.
+                  </div>
+                </div>
+
+                <div class="quick-questions">
+                  <button type="button" data-question="path">Почему такой путь?</button>
+                  <button type="button" data-question="career">Куда это ведет?</button>
+                  <button type="button" data-question="today">Что сегодня?</button>
+                </div>
+
+                <div class="ask-row">
+                  <input
+                    id="askInput"
+                    type="text"
+                    value="Как улучшить прогресс?"
+                    aria-label="Вопрос ИИ-Архитектору"
+                  />
+                  <button id="askBtn" type="button" aria-label="Спросить">
+                    <i data-lucide="send"></i>
+                  </button>
+                </div>
+              </aside>
+            </section>
+          </div>
         </section>
-
-        <aside class="side-panel" aria-label="ИИ-Архитектор">
-          <section class="architect-card">
-            <div class="architect-head">
-              <span class="bot-avatar"><i data-lucide="bot"></i></span>
-              <div>
-                <p class="eyebrow">ИИ-Архитектор</p>
-                <h2>Спросите про путь</h2>
-              </div>
-            </div>
-
-            <div class="chat" id="chat">
-              <div class="message bot">
-                Я пересобрал неделю: усилил финансы и стратегию, потому что по ним вырос спрос
-                в вакансиях для начинающих бизнес-аналитиков.
-              </div>
-              <div class="message user">Что мне делать сегодня?</div>
-              <div class="message bot" id="botAnswer">
-                Начните с прогноза выручки. Это закроет пробел по расчетам и поможет в курсе
-                по стратегии.
-              </div>
-            </div>
-
-            <div class="quick-questions">
-              <button type="button" data-question="path">Почему такой путь?</button>
-              <button type="button" data-question="career">Куда это ведет?</button>
-              <button type="button" data-question="today">Что сделать сегодня?</button>
-            </div>
-
-            <div class="ask-row">
-              <input
-                id="askInput"
-                type="text"
-                value="Как улучшить мой прогресс?"
-                aria-label="Вопрос ИИ-Архитектору"
-              />
-              <button id="askBtn" type="button" aria-label="Спросить">
-                <i data-lucide="send"></i>
-              </button>
-            </div>
-          </section>
-
-          <section class="signals-card">
-            <p class="eyebrow">Почему траектория изменилась</p>
-            <div class="signal-list">
-              <div>
-                <span>Спрос рынка</span>
-                <strong>Финансовая аналитика +18%</strong>
-              </div>
-              <div>
-                <span>Ваш прогресс</span>
-                <strong>Сильные выводы, стоит подтянуть расчеты</strong>
-              </div>
-              <div>
-                <span>Следующий навык</span>
-                <strong>Аргументация бизнес-решений</strong>
-              </div>
-            </div>
-          </section>
-        </aside>
-      </main>
+      </section>
 
       <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    </div>
+    </main>
 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script src="script.js"></script>
