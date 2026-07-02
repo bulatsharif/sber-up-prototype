@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sber.Up - быстрый прототип образовательной мультиагентной платформы."
+    />
+    <title>Sber.Up - AI-Декан</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#overview" data-scroll="overview" aria-label="Sber.Up">
+          <span class="brand-mark">Up</span>
+          <span>
+            <strong>Sber.Up</strong>
+            <small>динамический диплом</small>
+          </span>
+        </a>
+
+        <div class="topbar-actions">
+          <span class="live-chip"><i data-lucide="sparkles"></i> AI-Декан онлайн</span>
+          <button class="icon-button" type="button" data-scroll="presentation" aria-label="Открыть структуру презентации">
+            <i data-lucide="presentation"></i>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="dashboard" id="overview" aria-labelledby="overview-title">
+          <div class="panel lead-panel">
+            <div class="section-kicker">Пилотный кабинет студента</div>
+            <div class="lead-heading">
+              <div>
+                <h1 id="overview-title">AI-Декан пересобрал траекторию на неделю</h1>
+                <p>
+                  Статичный факультет заменен динамическим треком под прогресс студента,
+                  рыночный спрос и реальные микро-задачи.
+                </p>
+              </div>
+              <div class="student-avatar" aria-hidden="true">
+                <span>АС</span>
+              </div>
+            </div>
+
+            <div class="trajectory-banner">
+              <div>
+                <span class="eyebrow">Целевой профиль</span>
+                <strong>Инженер по Alignment LLM и распределенным системам</strong>
+              </div>
+              <div class="score-ring" aria-label="Готовность профиля 68 процентов">
+                <span id="readinessValue">68%</span>
+              </div>
+            </div>
+
+            <div class="summary-strip" aria-label="Ключевые показатели">
+              <div>
+                <span>Неделя</span>
+                <strong id="weekValue">14</strong>
+              </div>
+              <div>
+                <span>Навыков в стеке</span>
+                <strong>27</strong>
+              </div>
+              <div>
+                <span>PR-валидаций</span>
+                <strong>8</strong>
+              </div>
+            </div>
+
+            <div class="action-row">
+              <button class="primary-action" id="rebuildBtn" type="button">
+                <i data-lucide="refresh-cw"></i>
+                Пересобрать неделю
+              </button>
+              <button class="secondary-action" type="button" data-scroll="pilot">
+                <i data-lucide="target"></i>
+                Пилот
+              </button>
+            </div>
+          </div>
+
+          <aside class="panel market-panel" aria-labelledby="market-title">
+            <div class="section-kicker">Агент рынка</div>
+            <h2 id="market-title">Спрос сегодня</h2>
+            <div class="market-list">
+              <div class="market-row hot">
+                <span>LLM Alignment</span>
+                <strong>+31%</strong>
+              </div>
+              <div class="market-row">
+                <span>Distributed tracing</span>
+                <strong>+18%</strong>
+              </div>
+              <div class="market-row">
+                <span>Secure prompt pipelines</span>
+                <strong>+14%</strong>
+              </div>
+            </div>
+            <div class="reward-block">
+              <div class="reward-head">
+                <span>Reward function навыков</span>
+                <strong>0.86</strong>
+              </div>
+              <div class="bar"><span style="width: 86%"></span></div>
+            </div>
+          </aside>
+        </section>
+
+        <section class="workspace-grid" aria-label="Текущая учебная неделя">
+          <article class="panel skill-map-panel">
+            <div class="panel-title-row">
+              <div>
+                <div class="section-kicker">Граф знаний</div>
+                <h2>Модули недели</h2>
+              </div>
+              <span class="state-pill">обновлено</span>
+            </div>
+            <div class="skill-map" aria-label="Граф навыков">
+              <span class="skill-node active node-core">RAG Eval</span>
+              <span class="skill-node node-left">K8s</span>
+              <span class="skill-node node-right">Safety</span>
+              <span class="skill-node node-bottom-left">Tracing</span>
+              <span class="skill-node node-bottom-right">PR review</span>
+            </div>
+          </article>
+
+          <article class="panel tasks-panel">
+            <div class="section-kicker">Непрерывная валидация</div>
+            <h2>Реальные микро-задачи</h2>
+            <div class="task-list">
+              <div class="task-row">
+                <i data-lucide="git-pull-request"></i>
+                <div>
+                  <strong>Собрать eval harness для RAG-пайплайна</strong>
+                  <span>Сбер AI Platform · ревью в пятницу</span>
+                </div>
+                <em>72%</em>
+              </div>
+              <div class="task-row">
+                <i data-lucide="shield-check"></i>
+                <div>
+                  <strong>Найти jailbreak-риск в цепочке промптов</strong>
+                  <span>Security Lab · автопроверка пройдена</span>
+                </div>
+                <em>ok</em>
+              </div>
+              <div class="task-row">
+                <i data-lucide="network"></i>
+                <div>
+                  <strong>Развернуть трейсинг для распределенного сервиса</strong>
+                  <span>Cloud Native · требуется доработка</span>
+                </div>
+                <em>1 fix</em>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="content-band" id="trajectory" aria-labelledby="trajectory-title">
+          <div class="band-head">
+            <div>
+              <div class="section-kicker">Как работает</div>
+              <h2 id="trajectory-title">Каждую неделю система пересобирает стек навыков</h2>
+            </div>
+            <button class="secondary-action compact" type="button" data-scroll="agents">
+              <i data-lucide="bot"></i>
+              Агенты
+            </button>
+          </div>
+
+          <div class="timeline">
+            <article>
+              <span>01</span>
+              <h3>Диагностика</h3>
+              <p>Входной профиль, цифровой след, стиль решения задач и когнитивный темп.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Рынок</h3>
+              <p>Вакансии, коммиты, исследования и тренды превращаются в веса навыков.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Архитектура</h3>
+              <p>Из микромодулей собирается персональный граф знаний без фиксированного факультета.</p>
+            </article>
+            <article>
+              <span>04</span>
+              <h3>Рефакторинг</h3>
+              <p>Если концепт не усвоен, модуль меняет симуляцию, абстракцию и проверку.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-band" id="agents" aria-labelledby="agents-title">
+          <div class="band-head">
+            <div>
+              <div class="section-kicker">Мультиагентная LLM-архитектура</div>
+              <h2 id="agents-title">Персональный AI-Декан</h2>
+            </div>
+            <span class="state-pill accent">ансамбль</span>
+          </div>
+
+          <div class="agent-grid">
+            <article class="agent-card">
+              <i data-lucide="scan-search"></i>
+              <h3>Агент-Диагност</h3>
+              <p>Собирает профиль студента, выявляет пробелы и стиль мышления.</p>
+            </article>
+            <article class="agent-card">
+              <i data-lucide="trending-up"></i>
+              <h3>Агент Рынка</h3>
+              <p>Обновляет функцию ценности навыков по сигналам рынка здесь и сейчас.</p>
+            </article>
+            <article class="agent-card">
+              <i data-lucide="route"></i>
+              <h3>Агент-Архитектор</h3>
+              <p>Собирает индивидуальный граф микромодулей и проектных задач.</p>
+            </article>
+            <article class="agent-card">
+              <i data-lucide="wrench"></i>
+              <h3>Агент-Рефакторинг</h3>
+              <p>Переписывает модуль, если метрики показывают, что студент не усвоил концепт.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-band pilot-band" id="pilot" aria-labelledby="pilot-title">
+          <div class="band-head">
+            <div>
+              <div class="section-kicker">Первый пилот</div>
+              <h2 id="pilot-title">1 000 студентов, 4 динамических направления</h2>
+            </div>
+            <span class="state-pill">12 недель</span>
+          </div>
+
+          <div class="pilot-layout">
+            <div class="pilot-metrics">
+              <div>
+                <span>Студенты</span>
+                <strong>1 000</strong>
+              </div>
+              <div>
+                <span>Работодатели</span>
+                <strong>25</strong>
+              </div>
+              <div>
+                <span>Микро-задачи</span>
+                <strong>300+</strong>
+              </div>
+              <div>
+                <span>Цель трудоустройства</span>
+                <strong>70%</strong>
+              </div>
+            </div>
+            <div class="pilot-copy">
+              <h3>Роль Сбера</h3>
+              <p>
+                Сбер выступает поставщиком персонализированной образовательной программы:
+                подписка для студентов и корпоративный контур для компаний, которым нужны
+                специалисты с подтвержденным стеком навыков.
+              </p>
+              <h3>Ценность</h3>
+              <p>
+                Для студента - ниже риск выучиться на невостребованную профессию. Для бизнеса -
+                поток кандидатов, подготовленных под актуальные задачи, а не под устаревший диплом.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-band presentation-band" id="presentation" aria-labelledby="presentation-title">
+          <div class="band-head">
+            <div>
+              <div class="section-kicker">Материалы для выступления</div>
+              <h2 id="presentation-title">Доклад и структура презентации</h2>
+            </div>
+            <a class="doc-link" href="docs/presentation-structure.md">
+              <i data-lucide="file-text"></i>
+              MD
+            </a>
+          </div>
+
+          <div class="criteria-grid">
+            <article>
+              <span>Польза</span>
+              <p>Закрывает дефицит релевантных кадров при избытке формальных дипломов.</p>
+            </article>
+            <article>
+              <span>Будущее</span>
+              <p>ИИ дешевеет, персональная траектория становится массовой и экономически доступной.</p>
+            </article>
+            <article>
+              <span>Реалистичность</span>
+              <p>LLM, RAG, агентные пайплайны, LMS, HR-данные и автопроверки уже существуют.</p>
+            </article>
+            <article>
+              <span>Оригинальность</span>
+              <p>Не курс с рекомендациями, а непрерывно обновляемый диплом как стек навыков.</p>
+            </article>
+          </div>
+
+          <div class="slide-list" aria-label="Структура слайдов">
+            <article>
+              <strong>01. Sber.Up</strong>
+              <span>Название, one-liner, образ динамического диплома.</span>
+            </article>
+            <article>
+              <strong>02. Проблема</strong>
+              <span>Мертвая программа: рынок меняется быстрее учебного плана.</span>
+            </article>
+            <article>
+              <strong>03. Для кого</strong>
+              <span>Студенты, бизнес, Сбер как поставщик новой образовательной модели.</span>
+            </article>
+            <article>
+              <strong>04. Как работает</strong>
+              <span>AI-Декан и четыре агента: диагност, рынок, архитектор, рефакторинг.</span>
+            </article>
+            <article>
+              <strong>05. Интерфейс</strong>
+              <span>Показ прототипа: граф навыков, PR-валидация, рыночные сигналы.</span>
+            </article>
+            <article>
+              <strong>06. Эффект</strong>
+              <span>Нулевой риск устаревания профессии для студента, быстрые кадры для бизнеса.</span>
+            </article>
+            <article>
+              <strong>07. Пилот</strong>
+              <span>1 000 студентов, 4 направления, 12 недель, метрики трудоустройства.</span>
+            </article>
+            <article>
+              <strong>08. Критерии</strong>
+              <span>Польза, будущее, реалистичность, оригинальность.</span>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <nav class="mobile-nav" aria-label="Основная навигация">
+        <button type="button" data-scroll="overview">
+          <i data-lucide="layout-dashboard"></i>
+          <span>Обзор</span>
+        </button>
+        <button type="button" data-scroll="trajectory">
+          <i data-lucide="route"></i>
+          <span>Трек</span>
+        </button>
+        <button type="button" data-scroll="agents">
+          <i data-lucide="bot"></i>
+          <span>Агенты</span>
+        </button>
+        <button type="button" data-scroll="presentation">
+          <i data-lucide="presentation"></i>
+          <span>Преза</span>
+        </button>
+      </nav>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
