@@ -87,22 +87,18 @@ a {
   min-width: 0;
 }
 
-.logo strong,
-.logo span {
+.logo {
   display: block;
+  padding: 5px;
+  border-radius: 14px;
+  background: #ffffff;
 }
 
-.logo strong {
-  font-size: 22px;
-  font-weight: 950;
-  line-height: 0.95;
-}
-
-.logo span {
-  margin-top: 4px;
-  font-size: 9px;
-  font-weight: 850;
-  text-transform: uppercase;
+.logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 .rail-menu {
@@ -649,7 +645,7 @@ p {
     font-size: 37px;
   }
 
-  .logo strong {
-    font-size: 24px;
+  .logo {
+    max-width: 130px;
   }
 }
