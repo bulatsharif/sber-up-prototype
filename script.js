@@ -1,14 +1,52 @@
-const scrollButtons = document.querySelectorAll("[data-scroll]");
-const navButtons = document.querySelectorAll(".desktop-nav button, .mobile-nav button");
+const courseCards = document.querySelectorAll(".course-card");
 const rebuildBtn = document.querySelector("#rebuildBtn");
 const weekValue = document.querySelector("#weekValue");
-const readinessValue = document.querySelector("#readinessValue");
-const progressFill = document.querySelector("#progressFill");
-const focusValue = document.querySelector("#focusValue");
+const detailTitle = document.querySelector("#detailTitle");
+const detailText = document.querySelector("#detailText");
+const detailProgress = document.querySelector("#detailProgress");
+const todayTask = document.querySelector("#todayTask");
+const practiceTask = document.querySelector("#practiceTask");
+const marketReason = document.querySelector("#marketReason");
+const quickQuestions = document.querySelectorAll("[data-question]");
+const askBtn = document.querySelector("#askBtn");
+const askInput = document.querySelector("#askInput");
+const botAnswer = document.querySelector("#botAnswer");
 const toast = document.querySelector("#toast");
 
-const focusQueue = ["LLM Safety", "K8s tracing", "PR review", "RAG Eval"];
-let revision = 0;
+const courses = {
+  finance: {
+    title: "Финансовое моделирование",
+    text: "Учимся строить понятную модель бизнеса: доходы, расходы, сценарии роста и точка окупаемости.",
+    progress: "72%",
+    today: "Собрать прогноз выручки на 6 месяцев",
+    practice: "Модель для малого сервиса подписки",
+    market: "На рынке растет спрос на финансовых аналитиков",
+  },
+  product: {
+    title: "Управление продуктом",
+    text: "Разбираем, как выбрать полезную идею, проверить спрос и превратить ее в понятный план запуска.",
+    progress: "46%",
+    today: "Сформулировать проблему клиента и критерии успеха",
+    practice: "Карта продукта для сервиса личных финансов",
+    market: "Компании ищут людей, которые соединяют бизнес и пользователя",
+  },
+  strategy: {
+    title: "Стратегия и рынок",
+    text: "Учимся сравнивать рынки, видеть конкурентов и объяснять, почему одно решение сильнее другого.",
+    progress: "58%",
+    today: "Сравнить два сегмента клиентов по потенциалу роста",
+    practice: "Короткая стратегия выхода на новый рынок",
+    market: "Растет спрос на навыки оценки рынков и бизнес-решений",
+  },
+};
+
+const answers = {
+  path: "Путь построен так: сначала расчеты, затем продуктовая логика, потом стратегия. Так вы сможете не только считать, но и объяснять бизнес-решения.",
+  career: "Этот набор ведет к ролям бизнес-аналитика, младшего продуктового менеджера или финансового аналитика.",
+  today: "Сегодня лучше закрыть одну практическую задачу: прогноз выручки. Это самый важный пробел недели.",
+};
+
+let week = 8;
 let toastTimer;
 
 function showToast(message) {
@@ -20,58 +58,58 @@ function showToast(message) {
   toastTimer = setTimeout(() => toast.classList.remove("show"), 2200);
 }
 
-function setActiveNav(sectionId) {
-  navButtons.forEach((button) => {
-    button.classList.toggle("active", button.dataset.scroll === sectionId);
+function selectCourse(courseId) {
+  const course = courses[courseId];
+  if (!course) return;
+
+  courseCards.forEach((card) => {
+    const isActive = card.dataset.course === courseId;
+    card.classList.toggle("active", isActive);
+    card.setAttribute("aria-pressed", String(isActive));
   });
+
+  detailTitle.textContent = course.title;
+  detailText.textContent = course.text;
+  detailProgress.textContent = course.progress;
+  todayTask.textContent = course.today;
+  practiceTask.textContent = course.practice;
+  marketReason.textContent = course.market;
 }
 
-scrollButtons.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    event.preventDefault();
-    const target = document.getElementById(button.dataset.scroll);
-
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-      setActiveNav(button.dataset.scroll);
-    }
+courseCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    selectCourse(card.dataset.course);
   });
 });
 
 rebuildBtn?.addEventListener("click", () => {
-  revision += 1;
-
-  const nextWeek = 14 + revision;
-  const nextReadiness = Math.min(92, 68 + revision * 6);
-  const nextFocus = focusQueue[(revision - 1) % focusQueue.length];
-
-  weekValue.textContent = String(nextWeek);
-  readinessValue.textContent = `${nextReadiness}%`;
-  progressFill.style.width = `${nextReadiness}%`;
-  focusValue.textContent = nextFocus;
-
-  showToast(`Трек обновлен: неделя ${nextWeek}, фокус - ${nextFocus}`);
+  week += 1;
+  weekValue.textContent = `Неделя ${week}`;
+  selectCourse("product");
+  botAnswer.textContent =
+    "Я усилил курс по продукту: по вашим задачам видно, что расчеты идут хорошо, а аргументацию решений стоит подтянуть.";
+  showToast(`ИИ-Декан пересобрал путь: неделя ${week}`);
 });
 
-const observedSections = ["idea", "mechanics", "presentation"]
-  .map((id) => document.getElementById(id))
-  .filter(Boolean);
+quickQuestions.forEach((button) => {
+  button.addEventListener("click", () => {
+    botAnswer.textContent = answers[button.dataset.question];
+  });
+});
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    const visible = entries
-      .filter((entry) => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+askBtn?.addEventListener("click", () => {
+  const question = askInput.value.trim();
+  botAnswer.textContent = question
+    ? "Я бы начал с одного измеримого результата на сегодня и не перегружал неделю новыми темами."
+    : answers.today;
+  showToast("ИИ-Архитектор обновил рекомендацию");
+});
 
-    if (visible?.target?.id) {
-      setActiveNav(visible.target.id);
-    }
-  },
-  { rootMargin: "-20% 0px -65% 0px", threshold: [0.1, 0.35] }
-);
-
-observedSections.forEach((section) => observer.observe(section));
-setActiveNav("idea");
+askInput?.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    askBtn.click();
+  }
+});
 
 if (window.lucide) {
   window.lucide.createIcons();
