@@ -5,117 +5,165 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Sber.Up - прототип личного кабинета с персональной учебной траекторией."
+      content="Sber.Up - прототип динамического формирования учебной траектории."
     />
-    <title>Sber.Up - личный кабинет</title>
+    <title>Sber.Up - сборка недели</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=grid-ui-4" />
+    <link rel="stylesheet" href="styles.css?v=trajectory-1" />
   </head>
   <body>
     <main class="stage" aria-label="Sber.Up">
-      <section class="blueprint" aria-label="Личный кабинет Sber.Up">
+      <section class="blueprint" aria-label="Как ИИ-Декан собрал вашу неделю">
         <section class="product-window">
-          <aside class="rail" aria-label="Навигация">
+          <aside class="assembly-panel" aria-label="Сборка траектории">
             <a class="logo" href="/" aria-label="Sber.Up">
               <img src="assets/sber-up-logo.png?v=1" alt="Sber.Up" />
             </a>
 
-            <nav class="rail-menu">
-              <button class="rail-item rail-blue active" type="button">
-                <small>01</small>
-                <span>Обзор</span>
-              </button>
-              <button class="rail-item rail-yellow" type="button">
-                <small>02</small>
-                <span>Курсы</span>
-              </button>
-              <button class="rail-item rail-orange" type="button">
-                <small>03</small>
-                <span>Навыки</span>
-              </button>
-              <button class="rail-item rail-green" type="button">
-                <small>04</small>
-                <span>Карьера</span>
-              </button>
-            </nav>
+            <div class="assembly-head">
+              <p class="eyebrow">Сборка траектории</p>
+              <h1>Сборка недели</h1>
+              <p>ИИ-Декан прошел семь шагов и обновил программу под цель, рынок и ваш прогресс.</p>
+            </div>
 
-            <button class="rail-cta" id="rebuildBtn" type="button">Обновить путь</button>
+            <ol class="pipeline" aria-label="Шаги сборки недели">
+              <li>
+                <span>01</span>
+                <div>
+                  <strong>Цель определена</strong>
+                  <p>Junior Business Analyst</p>
+                </div>
+              </li>
+              <li>
+                <span>02</span>
+                <div>
+                  <strong>Прогресс проанализирован</strong>
+                  <p>сильна в стратегии, пробел в расчетах</p>
+                </div>
+              </li>
+              <li>
+                <span>03</span>
+                <div>
+                  <strong>Рынок проверен</strong>
+                  <p>вырос спрос на financial modeling</p>
+                </div>
+              </li>
+              <li>
+                <span>04</span>
+                <div>
+                  <strong>Skill gap найден</strong>
+                  <p>unit-экономика и прогноз выручки</p>
+                </div>
+              </li>
+              <li>
+                <span>05</span>
+                <div>
+                  <strong>Модули собраны</strong>
+                  <p>финмодель, аналитика, мини-проект</p>
+                </div>
+              </li>
+              <li>
+                <span>06</span>
+                <div>
+                  <strong>Команда подобрана</strong>
+                  <p>аналитик + продукт + дизайнер</p>
+                </div>
+              </li>
+              <li>
+                <span>07</span>
+                <div>
+                  <strong>Путь обновлен</strong>
+                  <p>+2 навыка в цифровой профиль</p>
+                </div>
+              </li>
+            </ol>
+
+            <section class="changes-card" aria-labelledby="changes-title">
+              <h2 id="changes-title">Что изменилось</h2>
+              <div class="change-list">
+                <p><span>+</span> Добавлен модуль: Финансовое моделирование</p>
+                <p><span>+</span> Усилен навык: Прогноз выручки</p>
+                <p><span>-</span> Убран модуль: Базовая теория менеджмента</p>
+                <p><span>→</span> Назначена командная задача недели</p>
+              </div>
+            </section>
+
+            <button class="rail-cta" id="rebuildBtn" type="button">Пересобрать неделю</button>
           </aside>
 
-          <div class="workspace">
-            <header class="cabinet-header">
+          <section class="trajectory-board" aria-label="Итоговая программа недели">
+            <header class="board-header">
               <div>
-                <p class="eyebrow">Добро пожаловать</p>
-                <h1>Алина Крылова</h1>
+                <p class="eyebrow">Как ИИ-Декан собрал вашу неделю</p>
+                <h1>Алина, курс изменился не случайно</h1>
                 <p>
-                  ИИ-Декан пересобрал неделю под ваш прогресс и спрос рынка:
-                  финансы, продукт и стратегия.
+                  Решение собрано из трех сигналов: рынок, ваш прогресс и карьерная цель.
+                  Ниже видно, какие агенты приняли участие и что попало в программу.
                 </p>
               </div>
               <div class="student-card">
                 <span>АК</span>
                 <div>
                   <strong id="weekValue">Неделя 8</strong>
-                  <small>Бизнес-аналитика</small>
+                  <small>Цель: Junior Business Analyst</small>
                 </div>
               </div>
             </header>
 
-            <section class="course-strip" aria-label="Текущие курсы">
-              <button
-                class="course-card active"
-                type="button"
-                data-course="finance"
-                aria-pressed="true"
-              >
-                <small>Курс 1</small>
-                <strong>Финансовое моделирование</strong>
-                <em>72% пройдено</em>
-                <span class="mini-progress"><span style="width: 72%"></span></span>
-              </button>
-
-              <button class="course-card" type="button" data-course="product" aria-pressed="false">
-                <small>Курс 2</small>
-                <strong>Управление продуктом</strong>
-                <em>46% пройдено</em>
-                <span class="mini-progress"><span style="width: 46%"></span></span>
-              </button>
-
-              <button class="course-card" type="button" data-course="strategy" aria-pressed="false">
-                <small>Курс 3</small>
-                <strong>Стратегия и рынок</strong>
-                <em>58% пройдено</em>
-                <span class="mini-progress"><span style="width: 58%"></span></span>
-              </button>
+            <section class="agent-grid" aria-label="Работа агентов">
+              <article class="agent-card agent-blue">
+                <small>01 · Агент Рынка</small>
+                <h2>12 400 вакансий</h2>
+                <p>+24% спрос на financial modeling</p>
+                <p>+17% спрос на unit economics</p>
+              </article>
+              <article class="agent-card agent-yellow">
+                <small>02 · Агент Диагност</small>
+                <h2>Прогресс студента</h2>
+                <p>Сильные стороны: стратегия, продуктовая логика</p>
+                <p>Пробелы: расчеты, финансовая модель</p>
+              </article>
+              <article class="agent-card agent-green">
+                <small>03 · Агент Архитектор</small>
+                <h2>Решение принято</h2>
+                <p>Усилить финансовый блок</p>
+                <p>Причина: повышает шанс выхода на роль бизнес-аналитика</p>
+              </article>
+              <article class="agent-card agent-orange">
+                <small>04 · Агент Практики</small>
+                <h2>Задача недели</h2>
+                <p>Собрать прогноз выручки на 6 месяцев</p>
+                <p>Формат: команда из 3 человек</p>
+              </article>
             </section>
 
-            <section class="work-grid">
-              <article class="detail-panel" aria-labelledby="detailTitle">
+            <section class="result-grid">
+              <article class="program-panel" aria-labelledby="program-title">
                 <div class="panel-head">
                   <div>
-                    <p class="eyebrow">Выбранный курс</p>
-                    <h2 id="detailTitle">Финансовое моделирование</h2>
+                    <p class="eyebrow">Итоговая программа</p>
+                    <h2 id="program-title">Неделя после пересборки</h2>
                   </div>
-                  <span class="status-pill" id="detailProgress">72%</span>
+                  <span class="status-pill">+2 навыка</span>
                 </div>
-                <p id="detailText">
-                  Учимся строить понятную модель бизнеса: доходы, расходы, сценарии
-                  роста и точка окупаемости.
-                </p>
 
-                <div class="task-grid">
-                  <div>
-                    <span>Сегодня</span>
-                    <strong id="todayTask">Собрать прогноз выручки на 6 месяцев</strong>
-                  </div>
-                  <div>
-                    <span>Практика</span>
-                    <strong id="practiceTask">Модель для малого сервиса подписки</strong>
-                  </div>
-                  <div>
-                    <span>Почему сейчас</span>
-                    <strong id="marketReason">На рынке растет спрос на финансовых аналитиков</strong>
-                  </div>
+                <div class="program-list">
+                  <article>
+                    <span>Добавлено рынком</span>
+                    <strong>Финансовое моделирование</strong>
+                  </article>
+                  <article>
+                    <span>Закрывает пробел</span>
+                    <strong>Unit-экономика</strong>
+                  </article>
+                  <article>
+                    <span>Ведет к карьерной цели</span>
+                    <strong>Продуктовая аналитика</strong>
+                  </article>
+                  <article>
+                    <span>Доказательство навыка</span>
+                    <strong>Мини-проект</strong>
+                  </article>
                 </div>
               </article>
 
@@ -124,32 +172,33 @@
                   <span><i data-lucide="bot"></i></span>
                   <div>
                     <p class="eyebrow">ИИ-Архитектор</p>
-                    <h2>Спросите про путь</h2>
+                    <h2>Почему так?</h2>
                   </div>
                 </div>
 
                 <div class="chat" id="chat">
                   <div class="message bot">
-                    Я усилил финансы и стратегию, потому что по ним вырос спрос
-                    в вакансиях для начинающих бизнес-аналитиков.
+                    Я пересобрал вашу неделю по трем сигналам: рынок, ваш прогресс
+                    и карьерная цель.
                   </div>
-                  <div class="message user">Что мне делать сегодня?</div>
+                  <div class="message user">Почему добавили финмодель?</div>
                   <div class="message bot" id="botAnswer">
-                    Начните с прогноза выручки. Это закроет пробел по расчетам.
+                    Потому что спрос на этот навык вырос, а у вас найден пробел в расчетах.
+                    Этот модуль повысит готовность к роли Junior Business Analyst.
                   </div>
                 </div>
 
                 <div class="quick-questions">
-                  <button type="button" data-question="path">Почему такой путь?</button>
-                  <button type="button" data-question="career">Куда это ведет?</button>
-                  <button type="button" data-question="today">Что сегодня?</button>
+                  <button type="button" data-question="signals">Какие сигналы?</button>
+                  <button type="button" data-question="gap">Какой пробел?</button>
+                  <button type="button" data-question="team">Зачем команда?</button>
                 </div>
 
                 <div class="ask-row">
                   <input
                     id="askInput"
                     type="text"
-                    value="Как улучшить прогресс?"
+                    value="Что делать первым?"
                     aria-label="Вопрос ИИ-Архитектору"
                   />
                   <button id="askBtn" type="button" aria-label="Спросить">
@@ -158,7 +207,7 @@
                 </div>
               </aside>
             </section>
-          </div>
+          </section>
         </section>
       </section>
 
@@ -166,6 +215,6 @@
     </main>
 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-    <script src="script.js?v=grid-ui-4"></script>
+    <script src="script.js?v=trajectory-1"></script>
   </body>
 </html>
