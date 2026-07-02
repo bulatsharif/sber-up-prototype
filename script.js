@@ -1,23 +1,27 @@
 const scrollButtons = document.querySelectorAll("[data-scroll]");
-const mobileButtons = document.querySelectorAll(".mobile-nav button");
+const navButtons = document.querySelectorAll(".desktop-nav button, .mobile-nav button");
 const rebuildBtn = document.querySelector("#rebuildBtn");
 const weekValue = document.querySelector("#weekValue");
 const readinessValue = document.querySelector("#readinessValue");
+const progressFill = document.querySelector("#progressFill");
+const focusValue = document.querySelector("#focusValue");
 const toast = document.querySelector("#toast");
-const skillNodes = document.querySelectorAll(".skill-node");
 
+const focusQueue = ["LLM Safety", "K8s tracing", "PR review", "RAG Eval"];
 let revision = 0;
 let toastTimer;
 
 function showToast(message) {
+  if (!toast) return;
+
   toast.textContent = message;
   toast.classList.add("show");
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
+  toastTimer = setTimeout(() => toast.classList.remove("show"), 2200);
 }
 
 function setActiveNav(sectionId) {
-  mobileButtons.forEach((button) => {
+  navButtons.forEach((button) => {
     button.classList.toggle("active", button.dataset.scroll === sectionId);
   });
 }
@@ -36,20 +40,20 @@ scrollButtons.forEach((button) => {
 
 rebuildBtn?.addEventListener("click", () => {
   revision += 1;
+
   const nextWeek = 14 + revision;
   const nextReadiness = Math.min(92, 68 + revision * 6);
+  const nextFocus = focusQueue[(revision - 1) % focusQueue.length];
 
   weekValue.textContent = String(nextWeek);
   readinessValue.textContent = `${nextReadiness}%`;
+  progressFill.style.width = `${nextReadiness}%`;
+  focusValue.textContent = nextFocus;
 
-  skillNodes.forEach((node, index) => {
-    node.classList.toggle("active", index <= revision % skillNodes.length);
-  });
-
-  showToast(`AI-Декан пересобрал неделю ${nextWeek}: добавлен рыночный приоритет по LLM Safety`);
+  showToast(`Трек обновлен: неделя ${nextWeek}, фокус - ${nextFocus}`);
 });
 
-const observedSections = ["overview", "trajectory", "agents", "presentation"]
+const observedSections = ["idea", "mechanics", "presentation"]
   .map((id) => document.getElementById(id))
   .filter(Boolean);
 
@@ -63,11 +67,11 @@ const observer = new IntersectionObserver(
       setActiveNav(visible.target.id);
     }
   },
-  { rootMargin: "-18% 0px -65% 0px", threshold: [0.1, 0.25, 0.5] }
+  { rootMargin: "-20% 0px -65% 0px", threshold: [0.1, 0.35] }
 );
 
 observedSections.forEach((section) => observer.observe(section));
-setActiveNav("overview");
+setActiveNav("idea");
 
 if (window.lucide) {
   window.lucide.createIcons();
